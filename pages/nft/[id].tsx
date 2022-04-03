@@ -10,7 +10,7 @@ import { sanityClient, urlFor } from '../../sanity'
 import { Collection } from '../../typings'
 import Link from 'next/link'
 import { BigNumber } from 'ethers'
-
+import toast, { Toaster } from 'react-hot-toast'
 interface Props {
   collection: Collection
 }
@@ -26,7 +26,7 @@ const NFTDropPage = ({ collection }: Props) => {
   const connectWithMetamask = useMetamask()
   const address = useAddress()
   // info change func name to disconnectFromMetamask
-  const disconnect = useDisconnect()
+  const disconnectFromMetamask = useDisconnect()
 
   useEffect(() => {
     if (!nftDrop) return
@@ -56,6 +56,17 @@ const NFTDropPage = ({ collection }: Props) => {
     if (!nftDrop || !address) return
     const quantity = 1 // how many unique nft's you want to claimed
     setIsLoading(true)
+
+    const notification = toast.loading('Minting NFT...', {
+      style: {
+        background: 'white',
+        color: 'green',
+        fontWeight: 'bold',
+        fontSize: '17px',
+        padding: '20px',
+      },
+    })
+
     nftDrop
       .claimTo(address, quantity)
       .then(async (tx) => {
@@ -63,15 +74,42 @@ const NFTDropPage = ({ collection }: Props) => {
         const claimedTokenId = tx[0].id
         const claimedNFT = await tx[0].data()
 
+        toast('HOORAY...You successfully Minted!!', {
+          duration: 5000,
+          style: {
+            background: 'green',
+            color: 'white',
+            fontWeight: 'bolder',
+            fontSize: '17px',
+            padding: '20px',
+          },
+        })
+
         console.log('claimedNFT', claimedNFT)
         console.log('claimedTokenId', claimedTokenId)
         console.log('receipt', receipt)
       })
-      .catch((error) => console.error('mintNft func: ', error))
+      .catch((error) => {
+        console.error('mintNft func: ', error)
+        toast('Whoops...Something went wrong!', {
+          style: {
+            background: 'red',
+            color: 'white',
+            fontWeight: 'bolder',
+            fontSize: '17px',
+            padding: '20px',
+          },
+        })
+      })
+      .finally(() => {
+        setIsLoading(false)
+        toast.dismiss(notification)
+      })
   }
 
   return (
     <div className="flex h-screen flex-col lg:grid lg:grid-cols-10">
+      <Toaster position="top-right" />
       {/* left */}
       <div className="bg-gradient-to-br from-cc_black to-cc_pink lg:col-span-4">
         <div className="flex flex-col items-center justify-center py-2 lg:min-h-screen">
@@ -106,7 +144,9 @@ const NFTDropPage = ({ collection }: Props) => {
             </h1>
           </Link>
           <button
-            onClick={() => (address ? disconnect() : connectWithMetamask())}
+            onClick={() =>
+              address ? disconnectFromMetamask() : connectWithMetamask()
+            }
             className="group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-purple-200 group-hover:from-purple-500 group-hover:to-pink-500 dark:text-white dark:focus:ring-purple-800"
           >
             <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
@@ -114,7 +154,6 @@ const NFTDropPage = ({ collection }: Props) => {
             </span>
           </button>
         </header>
-
         <hr className="my-2 border" />
         {address && (
           <p>
