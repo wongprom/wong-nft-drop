@@ -105,17 +105,37 @@ const NFTDropPage = ({ collection }: Props) => {
             {collection.title}
           </h1>
           {isLoading ? (
-            <p className="pt-2 text-xl text-cc_purple">Loading Supply ...</p>
+            <p className="animate-pulse pt-2 text-xl text-cc_purple">
+              Loading Supply ...
+            </p>
           ) : (
             <p className="pt-2 text-xl text-cc_purple">
               {claimedSupply} / {totalSupply?.toString()} NFT's claimed
             </p>
           )}
+          {isLoading && (
+            <img
+              className="h-80 w-80 object-contain"
+              src="https://cdn.hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif"
+              alt=""
+            />
+          )}
         </div>
-        <button className="group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-purple-200 group-hover:from-purple-500 group-hover:to-pink-500 dark:text-white dark:focus:ring-purple-800">
-          <span className=" relative w-full rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
-            Mint NFT (0.01 ETH)
-          </span>
+        <button
+          disabled={
+            isLoading || claimedSupply === totalSupply?.toNumber() || !address
+          }
+          className="mt-10 h-16 w-full rounded-full bg-red-600 font-bold text-white disabled:bg-gray-400"
+        >
+          {isLoading ? (
+            <>Loading...</>
+          ) : claimedSupply === totalSupply?.toNumber() ? (
+            <>SOLD OUT</>
+          ) : !address ? (
+            <>Sign in to Mint</>
+          ) : (
+            <span className="font-bold">Mint NFT (0.01)</span>
+          )}
         </button>
       </div>
     </div>
