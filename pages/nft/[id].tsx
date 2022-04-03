@@ -135,7 +135,7 @@ const NFTDropPage = ({ collection }: Props) => {
         {/* header */}
         <header className="flex items-center justify-between">
           <Link href={'/'}>
-            <h1 className="w-52 cursor-pointer text-xl font-extralight text-cc_white sm:w-80">
+            <h1 className="w-52 cursor-pointer text-2xl font-extralight text-cc_white sm:w-80 md:text-3xl">
               The{' '}
               <span className="font-extrabold underline decoration-cc_pink/50">
                 Wong

@@ -15,7 +15,7 @@ const Home = ({ collections }: Props) => {
         <title>NFT drop</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="mb-10 text-4xl font-extralight">
+      <h1 className="mb-10 text-2xl font-extralight md:text-3xl">
         The{' '}
         <span className="font-extrabold underline decoration-cc_pink/50">
           Wong
