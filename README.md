@@ -92,6 +92,10 @@ We've doubled the free included monthly usage to:
 ### Useful links
 
 - [https://docs.thirdweb.com/react](https://docs.thirdweb.com/react) - The thirdweb React SDK provides a collection of hooks to use in your React apps to interact with your thirdweb contracts.
+  <br>
+  <br>
+- [My Sanity Studio](https://wongs-nft-collections.sanity.studio/) - Live Link to Collections.
+  ![alt text](./githubImages/sanity-studio-live.png)
 
 ### Useful commands
 
@@ -115,6 +119,8 @@ or
 npm install next-sanity @sanity/image-url
 
 sanity start (cd in to /sanity folder first)
+
+sanity deploy (cd in to /sanity folder first)
 ```
 
 ### Prerequisites
