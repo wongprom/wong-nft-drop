@@ -44,12 +44,14 @@ NFT collection of images where you can log in with your metamask wallet
    ![alt text](./githubImages/sannity-blog-schema.png)
 9. Done!
 
-### Thirdweb
+## Thirdweb
 
-Add yor own collection with thirdweb using .csv file.
+### Add your own collection with thirdweb using .csv file.
+
 ![alt text](./githubImages/thirdweb-main.png)
 
-Example structure for CSV file <br>
+#### Example structure for CSV file <br>
+
 **Requirements**
 
 - Files must contain one .csv or .json file with metadata. [Download example.csv](https://thirdweb.com/example.csv). [Download example.json](https://thirdweb.com/example.json).
@@ -65,7 +67,8 @@ Example structure for CSV file <br>
   ![alt text](./githubImages/thirdweb-csv-file.png)
   <br>
 
-I found it helpful to order images by `tags`
+#### I found it helpful to order images by `tags`<br>
+
 ![alt text](./githubImages/thirdweb-order-images-by-tags.png)
 
 ### Sanity
