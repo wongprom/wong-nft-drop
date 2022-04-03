@@ -1,5 +1,7 @@
 import React from 'react'
 import { useAddress, useDisconnect, useMetamask } from '@thirdweb-dev/react'
+import { GetServerSideProps } from 'next'
+import { sanityClient } from '../../sanity'
 
 const NFTDropPage = () => {
   // auth
@@ -80,3 +82,48 @@ const NFTDropPage = () => {
 }
 
 export default NFTDropPage
+
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const query = `
+  *[_type == "collection" && slug.current == $id][0]{
+    _id,
+    title,
+    address,
+    description,
+    nftCollectionName,
+    mainImage{
+      asset
+    },
+    privewImage{
+      asset
+    },
+    slug{
+      current
+    },
+    creator-> {
+      _id,
+      name,
+      address,
+      slug {
+        current
+      },
+    },
+  }
+`
+  const collections = await sanityClient.fetch(query, {
+    id: params?.id,
+  })
+
+  // return 404 page
+  if (!collections) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      collections,
+    },
+  }
+}
