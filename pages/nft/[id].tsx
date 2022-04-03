@@ -52,7 +52,24 @@ const NFTDropPage = ({ collection }: Props) => {
     fetchNFTDropData()
   }, [nftDrop])
 
-  console.log('🚀 ~ file: [id].tsx ~ line 8 ~ NFTDropPage ~ address', address)
+  const mintNft = () => {
+    if (!nftDrop || !address) return
+    const quantity = 1 // how many unique nft's you want to claimed
+    setIsLoading(true)
+    nftDrop
+      .claimTo(address, quantity)
+      .then(async (tx) => {
+        const receipt = tx[0].receipt
+        const claimedTokenId = tx[0].id
+        const claimedNFT = await tx[0].data()
+
+        console.log('claimedNFT', claimedNFT)
+        console.log('claimedTokenId', claimedTokenId)
+        console.log('receipt', receipt)
+      })
+      .catch((error) => console.error('mintNft func: ', error))
+  }
+
   return (
     <div className="flex h-screen flex-col lg:grid lg:grid-cols-10">
       {/* left */}
@@ -133,6 +150,7 @@ const NFTDropPage = ({ collection }: Props) => {
           )}
         </div>
         <button
+          onClick={mintNft}
           disabled={
             isLoading || claimedSupply === totalSupply?.toNumber() || !address
           }
