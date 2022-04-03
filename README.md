@@ -44,6 +44,30 @@ NFT collection of images where you can log in with your metamask wallet
    ![alt text](./githubImages/sannity-blog-schema.png)
 9. Done!
 
+### Thirdweb
+
+Add yor own collection with thirdweb using .csv file.
+![alt text](./githubImages/thirdweb-main.png)
+
+Example structure for CSV file <br>
+**Requirements**
+
+- Files must contain one .csv or .json file with metadata. [Download example.csv](https://thirdweb.com/example.csv). [Download example.json](https://thirdweb.com/example.json).
+- The csv must have a `name` column, which defines the name of the NFT.
+- Asset names _must_ be sequential 0,1,2,3...n.[extension]. It doesn't matter at what number you begin. (Example: `131.png`, `132.png`).<br>
+
+**Options**
+
+- Images and other file types can be used in combination.
+- They both have to follow the asset naming convention above. (Example: `0.png` and `0.mp4`, `1.png` and `1.glb`, etc.)
+- When uploading files, we will upload them and pin them to IPFS automatically for you. If you already have the files uploaded, you can add an `image` and/or `animation_url` column and add the IPFS hashes there. Download example-with-ipfs.csv<br>
+  [Download example-with-ipfs.csv](https://thirdweb.com/example-with-ipfs.csv)<br>
+  ![alt text](./githubImages/thirdweb-csv-file.png)
+  <br>
+
+I found it helpful to order images by `tags`
+![alt text](./githubImages/thirdweb-order-images-by-tags.png)
+
 ### Sanity
 
 Sanity is the platform for structured content that lets you build better digital experiences. It comes with an open-source editor built in React, Sanity Studio, and a real-time hosted data store, Content Lake.
