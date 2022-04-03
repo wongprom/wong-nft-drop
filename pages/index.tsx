@@ -62,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       mainImage{
         asset
       },
-      privewImage{
+      previewImage{
         asset
       },
       slug{
