@@ -131,11 +131,11 @@ const NFTDropPage = ({ collection }: Props) => {
         </div>
       </div>
       {/* right */}
-      <div className="flex flex-1 flex-col p-12 lg:col-span-6">
+      <div className="flex flex-1 flex-col bg-cc_black p-12 lg:col-span-6">
         {/* header */}
         <header className="flex items-center justify-between">
           <Link href={'/'}>
-            <h1 className="w-52 cursor-pointer text-xl font-extralight sm:w-80">
+            <h1 className="w-52 cursor-pointer text-xl font-extralight text-cc_white sm:w-80">
               The{' '}
               <span className="font-extrabold underline decoration-cc_pink/50">
                 Wong
@@ -154,9 +154,9 @@ const NFTDropPage = ({ collection }: Props) => {
             </span>
           </button>
         </header>
-        <hr className="my-2 border" />
+        <hr className="my-2 border border-cc_light_blue/30" />
         {address && (
-          <p>
+          <p className="text-center text-cc_white/30">
             You are logedin with wallet {address.substring(0, 4)}...
             {address.substring(address.length - 5)}
           </p>
@@ -168,32 +168,32 @@ const NFTDropPage = ({ collection }: Props) => {
             src={urlFor(collection?.mainImage).url()}
             alt=""
           />
-          <h1 className="text-3xl font-bold lg:text-5xl lg:font-extrabold">
+          <h1 className="text-3xl font-bold text-cc_white/80 lg:text-5xl lg:font-extrabold">
             {collection.title}
           </h1>
           {isLoading ? (
-            <p className="animate-pulse pt-2 text-xl text-cc_purple">
+            <p className="animate-pulse pt-2 text-xl text-cc_white">
               Loading Supply ...
             </p>
           ) : (
-            <p className="pt-2 text-xl text-cc_purple">
+            <p className="pt-2 text-xl text-cc_orange">
               {claimedSupply} / {totalSupply?.toString()} NFT's claimed
             </p>
           )}
-          {isLoading && (
+          {/* {isLoading && (
             <img
               className="h-80 w-80 object-contain"
               src="https://cdn.hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif"
               alt=""
             />
-          )}
+          )} */}
         </div>
         <button
           onClick={mintNft}
           disabled={
             isLoading || claimedSupply === totalSupply?.toNumber() || !address
           }
-          className="mt-10 h-16 w-full rounded-full bg-red-600 font-bold text-white disabled:bg-gray-400"
+          className="mt-10 h-16 w-full rounded-full bg-cc_pink font-bold text-white disabled:bg-gray-400"
         >
           {isLoading ? (
             <>Loading...</>
