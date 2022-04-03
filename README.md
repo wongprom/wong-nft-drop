@@ -11,6 +11,7 @@ NFT collection of images where you can log in with your metamask wallet
 - [TypeScript](https://www.typescriptlang.org/) - TypeScript is JavaScript with syntax for types
 - [Thirdweb](https://thirdweb.com/) - Smart contracts you control. Tools that accelerate your workflow.
   Intuitive SDKs and widgets for developers.
+- [Sanity](https://www.sanity.io/) - Sanity.io is the unified content platform that powers better digital experiences
   <!-- - [Trufflesuite](https://trufflesuite.com/) - Sweet Tools for Smart Contracts
     The Truffle Suite gets developers from idea to dapp as comfortably as possible -->
   <!-- - [Ganache](https://github.com/trufflesuite/ganache) - A tool for creating a local blockchain for fast Ethereum development -->
@@ -21,7 +22,45 @@ NFT collection of images where you can log in with your metamask wallet
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+### Connect Sanity
+
+1. `npm install -g @sanity/cli`
+   <br>
+   or
+   <br>
+2. `yarn add -g @sanity/cli`
+3. `sanity login`
+   ![alt text](./githubImages/sanity-login-succeesful.png)
+   <br>
+4. `sanity init --coupon sonny2022`
+   ![alt text](./githubImages/sanity-coupon.png)
+5. Project name: Wong NFT Drop  
+   ![alt text](./githubImages/sanity-project-name.png)
+6. Use the default dataset configuration? Y  
+   ![alt text](./githubImages/sanity-default-dataset.png)
+7. Project output path: (just type, "Sanity" and press enter)
+   ![alt text](./githubImages/sanity-project-output-path.png)
+8. Select project template? Blog (schema)
+   ![alt text](./githubImages/sannity-blog-schema.png)
+9. Done!
+
+### Sanity
+
+Sanity is the platform for structured content that lets you build better digital experiences. It comes with an open-source editor built in React, Sanity Studio, and a real-time hosted data store, Content Lake.
+<br>
+
+Get started with the boosted free plan: [sanity.io/sonny](https://www.sanity.io/sonny)<br>
+`npm install -g @sanity/cli`<br>
+`sanity init --coupon sonny2022`
+
+#### What does the plan include?
+
+We've doubled the free included monthly usage to:
+
+- 200k API requests
+- 1M API CDN requests
+- 20GB Bandwidth.
+- You also get unlimited admin users so you and your whole team can try it out – be it for your own website, app project, podcasting backend, or whatever one can use a real-time graph-based API for.
 
 ### Useful links
 
@@ -30,7 +69,25 @@ These instructions will get you a copy of the project up and running on your loc
 ### Useful commands
 
 ```
+CREATE NEXT.JS APP WITH TAILWINDCSS3
 npx create-next-app --example with-tailwindcss YOUR-APP-NAME-HERE
+```
+
+```
+SANITY
+yarn add -g @sanity/cli
+or
+npm install -g @sanity/cli
+
+sanity login
+
+sanity init --coupon sonny2022
+
+yarn add next-sanity @sanity/image-url
+or
+npm install next-sanity @sanity/image-url
+
+sanity start (cd in to /sanity folder first)
 ```
 
 ### Prerequisites
