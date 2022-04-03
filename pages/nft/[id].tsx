@@ -18,6 +18,7 @@ interface Props {
 const NFTDropPage = ({ collection }: Props) => {
   const [claimedSupply, setClaimedSupply] = useState<BigNumber | number>(0)
   const [totalSupply, setTotalSupply] = useState<BigNumber>()
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const nftDrop = useNFTDrop(collection.address)
 
   // auth
@@ -30,10 +31,12 @@ const NFTDropPage = ({ collection }: Props) => {
     if (!nftDrop) return
 
     const fetchNFTDropData = async () => {
+      setIsLoading(true)
       const claimed = await nftDrop.getAllClaimed()
       const total = await nftDrop.totalSupply()
       setClaimedSupply(claimed.length)
       setTotalSupply(total)
+      setIsLoading(false)
     }
     fetchNFTDropData()
   }, [nftDrop])
@@ -101,9 +104,13 @@ const NFTDropPage = ({ collection }: Props) => {
           <h1 className="text-3xl font-bold lg:text-5xl lg:font-extrabold">
             {collection.title}
           </h1>
-          <p className="pt-2 text-xl text-cc_purple">
-            {claimedSupply} / {totalSupply?.toString()} NFT's claimed
-          </p>
+          {isLoading ? (
+            <p className="pt-2 text-xl text-cc_purple">Loading Supply ...</p>
+          ) : (
+            <p className="pt-2 text-xl text-cc_purple">
+              {claimedSupply} / {totalSupply?.toString()} NFT's claimed
+            </p>
+          )}
         </div>
         <button className="group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-purple-200 group-hover:from-purple-500 group-hover:to-pink-500 dark:text-white dark:focus:ring-purple-800">
           <span className=" relative w-full rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
