@@ -93,6 +93,7 @@ We've doubled the free included monthly usage to:
 
 - [https://docs.thirdweb.com/react](https://docs.thirdweb.com/react) - The thirdweb React SDK provides a collection of hooks to use in your React apps to interact with your thirdweb contracts.
   <br>
+- [Google drive](https://drive.google.com/drive/folders/1qU7Wfv0hDGGULe9b9z_TVMkK1G3nIacv) - with images and .csv file for Thirdweb
   <br>
 - [My Sanity Studio](https://wongs-nft-collections.sanity.studio/) - Live Link to Collections.
   ![alt text](./githubImages/sanity-studio-live.png)
