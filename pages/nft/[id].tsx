@@ -20,13 +20,49 @@ const NFTDropPage = ({ collection }: Props) => {
   const [totalSupply, setTotalSupply] = useState<BigNumber>()
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [priceInEth, setPriceInEth] = useState<string>()
+  const [claimedNFTs, setClaimedNFTs] = useState()
+  const [unClaimedNFTs, setUnClaimedNFTs] = useState()
   const nftDrop = useNFTDrop(collection.address)
 
+  console.log(claimedNFTs)
   // auth
   const connectWithMetamask = useMetamask()
   const address = useAddress()
   // info change func name to disconnectFromMetamask
   const disconnectFromMetamask = useDisconnect()
+
+  useEffect(() => {
+    if (!nftDrop) return
+
+    const fetchUnclaimedNFTs = async () => {
+      const unclaimedNFTs = await nftDrop.getAllUnclaimed()
+
+      // @ts-ignore
+      setUnClaimedNFTs(unclaimedNFTs)
+    }
+    fetchUnclaimedNFTs()
+  }, [nftDrop])
+
+  console.log(
+    '🚀 ~ file: [id].tsx ~ line 25 ~ NFTDropPage ~ unClaimedNFTs',
+    unClaimedNFTs
+  )
+
+  useEffect(() => {
+    if (!nftDrop) return
+
+    const fetchClaimedNFTs = async () => {
+      const claimedNFTs = await nftDrop.getAllClaimed()
+      const firstOwner = claimedNFTs[0].owner
+      console.log(
+        '🚀 ~ file: [id].tsx ~ line 38 ~ fetchClaimedNFTs ~ firstOwner',
+        firstOwner
+      )
+      // @ts-ignore
+      setClaimedNFTs(claimedNFTs)
+    }
+    fetchClaimedNFTs()
+  }, [nftDrop])
 
   useEffect(() => {
     if (!nftDrop) return
@@ -106,6 +142,10 @@ const NFTDropPage = ({ collection }: Props) => {
         toast.dismiss(notification)
       })
   }
+
+  const numberofNFTs = [
+    3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+  ]
 
   return (
     <div className="flex h-screen flex-col lg:grid lg:grid-cols-10">
@@ -188,6 +228,63 @@ const NFTDropPage = ({ collection }: Props) => {
             />
           )} */}
         </div>
+        <main className="">
+          {numberofNFTs.map((nft, index) => (
+            <Link href="" key={index}>
+              <div className="inline-flex cursor-pointer items-center rounded-xl bg-cc_light_gray text-cc_white transition-all duration-200 hover:scale-105">
+                <div className=" flex flex-col items-center p-5">
+                  <img
+                    className="h-60 w-60 rounded-2xl object-cover"
+                    src={urlFor(collection?.mainImage).url()}
+                    alt=""
+                  />
+                  <p className="-mt-4 rounded-full bg-cc_light_gray py-2 px-6">
+                    ape-0043
+                  </p>
+                  <p>For</p>
+                  <div className="flex flex-col items-center rounded-2xl bg-pink-100 p-5">
+                    <h2 className=" ">0xe1...487du</h2>
+                    <p className="mt-2 text-sm text-cc_light_gray">
+                      {collection.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Link>
+
+            // <div className="w-56 bg-pink-900" >
+            //   <div className="rounded-xl bg-gradient-to-br from-yellow-400 to-purple-600 p-2">
+            //     <img
+            //       className="rounded-xl object-cover"
+            //       src="https://picsum.photos/250/250"
+            //       alt=""
+            //     />
+
+            //     <span className="y-2 rounded-2xl bg-cc_white px-4">
+            //       12345 etx
+            //     </span>
+            //   </div>
+            // </div>
+
+            // <div className="h-54 flex items-center  bg-pink-900">
+            //   <p className="delay-50 group w-60 rounded-lg bg-gray-800 p-5 duration-100 hover:bg-gray-700">
+            //     <img
+            //       src="https://picsum.photos/250/250"
+            //       className="w-full rounded shadow"
+            //     />
+            //     <h3 className="mt-5 font-bold text-gray-200">
+            //       {' '}
+            //       Top 50 - Global
+            //     </h3>
+            //     <p className="mt-2 text-xs font-light text-gray-400">
+            //       {' '}
+            //       Your daily update of the most played track from around the
+            //       world...
+            //     </p>
+            //   </p>
+            // </div>
+          ))}
+        </main>
         <button
           onClick={mintNft}
           disabled={
