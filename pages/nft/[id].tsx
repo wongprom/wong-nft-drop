@@ -151,7 +151,7 @@ const NFTDropPage = ({ collection }: Props) => {
     <div className="flex h-screen flex-col lg:grid lg:grid-cols-10">
       <Toaster position="top-right" />
       {/* left */}
-      <div className="bg-gradient-to-br from-cc_black to-cc_pink lg:col-span-4">
+      <div className="bg-gradient-to-br from-cc_black to-cc_pink lg:col-span-4 xl:col-span-3 2xl:col-span-2">
         <div className="flex flex-col items-center justify-center py-2 lg:min-h-screen">
           <div className="rounded-xl bg-gradient-to-br from-yellow-400 to-purple-600 p-2">
             <img
@@ -171,7 +171,7 @@ const NFTDropPage = ({ collection }: Props) => {
         </div>
       </div>
       {/* right */}
-      <div className="flex flex-1 flex-col bg-cc_black p-12 lg:col-span-6">
+      <div className="flex flex-1 flex-col bg-cc_black p-12 lg:col-span-6 xl:col-span-7 2xl:col-span-8">
         {/* header */}
         <header className="flex items-center justify-between">
           <Link href={'/'}>
@@ -220,70 +220,118 @@ const NFTDropPage = ({ collection }: Props) => {
               {claimedSupply} / {totalSupply?.toString()} NFT's claimed
             </p>
           )}
-          {/* {isLoading && (
-            <img
-              className="h-80 w-80 object-contain"
-              src="https://cdn.hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif"
-              alt=""
-            />
-          )} */}
         </div>
-        <main className="">
-          {numberofNFTs.map((nft, index) => (
-            <Link href="" key={index}>
-              <div className="inline-flex cursor-pointer items-center rounded-xl bg-cc_light_gray text-cc_white transition-all duration-200 hover:scale-105">
-                <div className=" flex flex-col items-center p-5">
-                  <img
-                    className="h-60 w-60 rounded-2xl object-cover"
-                    src={urlFor(collection?.mainImage).url()}
-                    alt=""
-                  />
-                  <p className="-mt-4 rounded-full bg-cc_light_gray py-2 px-6">
-                    ape-0043
-                  </p>
-                  <p>For</p>
-                  <div className="flex flex-col items-center rounded-2xl bg-pink-100 p-5">
-                    <h2 className=" ">0xe1...487du</h2>
-                    <p className="mt-2 text-sm text-cc_light_gray">
-                      {collection.description}
-                    </p>
+        <main className="max-w-screen-4xl">
+          <section className="w-full rounded-2xl py-20 lg:mt-10 lg:bg-gray-800">
+            <div className=" max-w-screen-4xl mx-auto grid grid-cols-1 justify-items-center gap-6 rounded-2xl xl:grid-cols-2 2xl:grid-cols-4 ">
+              {numberofNFTs.map((nft, index) => (
+                <div className="mx-auto grid w-full grid-cols-1 justify-items-center rounded-2xl border bg-gray-900 md:max-w-sm">
+                  {/* <!--1--> */}
+                  <div className="flex flex-col">
+                    <div className="mx-auto my-5 h-2 w-10 rounded-full border-0 bg-gray-500"></div>
+                    <div className="h-52 w-48 rounded-lg">
+                      <img
+                        className="h-full w-full rounded-lg object-cover"
+                        src="https://gateway.ipfscdn.io/ipfs/QmfMycqNrFwaLKjtnLKt5x63E5BqijPKZXUzXED7x3peLg/4.png"
+                        alt=""
+                      />
+                    </div>
+                    <div className="-mt-4 flex">
+                      <span className="mx-auto rounded-full bg-white px-4 py-1 text-sm">
+                        ape-1837
+                      </span>
+                    </div>
+                    <div className="mt-5 flex justify-center">
+                      <p className="text-sm font-semibold text-gray-400">
+                        INFO
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* <!--2--> */}
+                  <div className="mt-2 grid w-2/3  gap-4 rounded-xl bg-gray-800  p-3 text-sm text-gray-400">
+                    <div className="flex flex-col items-center justify-between sm:flex-row">
+                      <p>NFT's claimed</p>
+                      <p className="text-gray-50">
+                        <span className="text-red-500">{claimedSupply}</span> /{' '}
+                        {totalSupply?.toString()}
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-center justify-between sm:flex-row">
+                      <p>Name</p>
+                      <p className="text-gray-50">ape-1837</p>
+                    </div>
+                    <div className="flex flex-col items-center justify-between sm:flex-row">
+                      <p>Collection</p>
+                      <p className="text-gray-50">A WONG Ape</p>
+                    </div>
+                    <div className="flex flex-col items-center justify-between sm:flex-row">
+                      <p>Mint price</p>
+                      <p className="text-gray-50">0.01 ETH</p>
+                    </div>
+                  </div>
+                  {/* <!--3--> */}
+                  <div className="mt-5 w-2/3 rounded-xl bg-gray-800 p-3 text-white">
+                    <h3>Properties</h3>
+                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                      <div className="mt-2 flex flex-col items-center justify-center rounded-md border  border-blue-400 p-2 ">
+                        <p className="text-xs text-blue-400">Eyes</p>
+                        <p className="text-sm">zombie</p>
+                        <p></p>
+                      </div>
+                      <div className="mt-2 flex flex-col items-center justify-center rounded-md border  border-blue-400 p-2 ">
+                        <p className="text-xs text-blue-400">Fur</p>
+                        <p className="text-sm">Gold</p>
+                        <p></p>
+                      </div>
+                      <div className="mt-2 flex flex-col items-center justify-center rounded-md border  border-blue-400 p-2 ">
+                        <p className="text-xs text-blue-400">Glases</p>
+                        <p className="text-sm">none</p>
+                        <p></p>
+                      </div>
+                      <div className="mt-2 flex flex-col items-center justify-center rounded-md border  border-blue-400 p-2 ">
+                        <p className="text-xs text-blue-400">Hat</p>
+                        <p className="text-sm">none</p>
+                        <p></p>
+                      </div>
+                      <div className="mt-2 flex flex-col items-center justify-center rounded-md border  border-blue-400 p-2 ">
+                        <p className="text-xs text-blue-400">Shirt</p>
+                        <p className="text-sm">polo</p>
+                        <p></p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* <!--4--> */}
+                  <div className="flex w-full flex-col items-center">
+                    <button className="my-10 w-10/12 rounded-full bg-black py-4 text-xl font-medium tracking-widest text-gray-100 shadow-[9px_10px_30px_rgba(240,_46,_170,_0.5)]">
+                      MINT
+                    </button>
                   </div>
                 </div>
-              </div>
-            </Link>
-
-            // <div className="w-56 bg-pink-900" >
-            //   <div className="rounded-xl bg-gradient-to-br from-yellow-400 to-purple-600 p-2">
-            //     <img
-            //       className="rounded-xl object-cover"
-            //       src="https://picsum.photos/250/250"
-            //       alt=""
-            //     />
-
-            //     <span className="y-2 rounded-2xl bg-cc_white px-4">
-            //       12345 etx
-            //     </span>
-            //   </div>
-            // </div>
-
-            // <div className="h-54 flex items-center  bg-pink-900">
-            //   <p className="delay-50 group w-60 rounded-lg bg-gray-800 p-5 duration-100 hover:bg-gray-700">
-            //     <img
-            //       src="https://picsum.photos/250/250"
-            //       className="w-full rounded shadow"
-            //     />
-            //     <h3 className="mt-5 font-bold text-gray-200">
-            //       {' '}
-            //       Top 50 - Global
-            //     </h3>
-            //     <p className="mt-2 text-xs font-light text-gray-400">
-            //       {' '}
-            //       Your daily update of the most played track from around the
-            //       world...
-            //     </p>
-            //   </p>
-            // </div>
-          ))}
+                // <Link href="" key={index}>
+                //   <div classNameName="inline-flex cursor-pointer items-center rounded-xl bg-cc_light_gray text-cc_white transition-all duration-200 hover:scale-105">
+                //     <div classNameName=" flex flex-col items-center p-5">
+                //       <img
+                //         classNameName="h-60 w-60 rounded-2xl object-cover"
+                //         src={urlFor(collection?.mainImage).url()}
+                //         alt=""
+                //       />
+                //       <p classNameName="-mt-4 rounded-full bg-cc_light_gray py-2 px-6">
+                //         ape-0043
+                //       </p>
+                //       <p>For</p>
+                //       <div classNameName="flex flex-col items-center rounded-2xl bg-pink-100 p-5">
+                //         <h2 classNameName=" ">0xe1...487du</h2>
+                //         <p classNameName="mt-2 text-sm text-cc_light_gray">
+                //           {collection.description}
+                //         </p>
+                //       </div>
+                //     </div>
+                //   </div>
+                // </Link>
+              ))}
+            </div>
+          </section>
         </main>
         <button
           onClick={mintNft}
