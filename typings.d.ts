@@ -11,6 +11,21 @@ export interface Creator {
   }
 }
 
+export interface Ape {
+  id: BigNumber
+  name: string
+  description: string
+  image: string
+  uri: string
+  properties: {
+    Shirt: string
+    Fur: string
+    Glases: string
+    Hat: string
+    Eyse: string
+  }
+}
+
 export interface Collection {
   _id: string
   title: string
