@@ -17,7 +17,7 @@ const CardApe: React.FC<Props> = ({
   return (
     <div
       key={ape.name}
-      className="group mx-auto grid w-full grid-cols-1 justify-items-center rounded-2xl border bg-gray-900  md:max-w-sm"
+      className="group mx-auto mb-10 grid w-full grid-cols-1 justify-items-center rounded-2xl border bg-gray-900  md:max-w-sm"
     >
       {/* <!--1--> */}
       <div className="flex flex-col">
@@ -61,7 +61,7 @@ const CardApe: React.FC<Props> = ({
         </div>
       </div>
       {/* <!--3--> */}
-      <div className="mt-5 w-2/3 rounded-xl bg-gray-800 p-3 text-white">
+      <div className="my-5 w-2/3 rounded-xl bg-gray-800 p-3 text-white">
         <h3 className="text-blue-200">Properties</h3>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
           {Object.entries(ape.properties).map((arr) => {
@@ -76,11 +76,11 @@ const CardApe: React.FC<Props> = ({
         </div>
       </div>
       {/* <!--4--> */}
-      <div className="flex w-full flex-col items-center">
+      {/* <div className="flex w-full flex-col items-center">
         <button className="my-10 w-10/12 rounded-full bg-black py-4 text-xl font-medium tracking-widest text-gray-100 shadow-[9px_10px_30px_rgba(240,_46,_170,_0.5)] hover:shadow-[9px_10px_30px_rgba(126,_21,_69,_0.5)]">
           MINT {priceInEth} ETH
         </button>
-      </div>
+      </div> */}
     </div>
   )
 }
