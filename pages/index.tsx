@@ -28,7 +28,10 @@ const Home = ({ collections }: Props) => {
             {
               /* //! START wong duckz under construction, remove when done */
             }
-            if (collection.slug.current === 'wong-duckz') {
+            if (
+              collection.slug.current === 'wong-duckz' ||
+              collection.slug.current === 'wongs-marketplace'
+            ) {
               return (
                 <div className="flex cursor-not-allowed  flex-col items-center transition-all duration-200 hover:scale-105 hover:opacity-50">
                   <img
